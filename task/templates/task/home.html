@@ -1,0 +1,13 @@
+{% extends "task/base.html" %} {% block content %}
+
+<h1>Home Page</h1>
+
+{% if user.is_authenticated %}
+<a href="{% url 'createtask' %}">Create New Task</a>
+<br />
+<a href="{% url 'currenttasks' %}">See Outstanding Tasks</a>
+<br />
+<a href="{% url 'completedtasks' %}">See Completed Tasks</a>
+
+{% endif %}
+{% endblock %}

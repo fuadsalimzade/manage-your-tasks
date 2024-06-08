@@ -1,0 +1,12 @@
+{% extends "task/base.html" %} {% block content %}
+
+<h1>New Task Creation</h1>
+<br />
+<p>{{ error }}</p>
+<br />
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+<a href="{% url 'home' %}">Home Page</a>
+{% endblock %}

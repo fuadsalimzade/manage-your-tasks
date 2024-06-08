@@ -1,0 +1,18 @@
+{% extends "task/base.html" %} {% block content %} {% csrf_token %}
+<br />
+<br />
+<h3>Completed Task</h3>
+<br />
+
+<form>
+    <p> Created on : {{ task.created }} 
+        <br />
+        Completed on: {{ task.datecompleted }} 
+    </p>
+    {{ form.as_p }}
+</form>
+
+
+<a href="{% url 'completedtasks' %}">Go back to completed tasks</a>
+
+{% endblock %}

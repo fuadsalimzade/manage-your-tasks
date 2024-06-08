@@ -1,0 +1,18 @@
+<link
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+{% if user.is_authenticated %} Logged in as {{ user.username }}
+
+<form method="POST" action="{% url 'logoutuser' %}">
+  {% csrf_token %}
+  <button type="submit">Logout</button>
+</form>
+
+{% else %}
+
+<a href="{% url 'loginuser' %}">Login</a>
+<a href="{% url 'signupuser' %}">Sign Up</a>
+
+{% endif %} {% block content %} {% endblock %}

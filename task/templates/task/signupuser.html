@@ -1,0 +1,11 @@
+{% extends "task/base.html" %} {% block content %} {% csrf_token %}
+
+<h1>Sign Up</h1>
+<p>{{ error }}</p>
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <br />
+  <input type="submit" value="Sign Up" class="btn btn-primary" />
+</form>
+<a href="{% url 'home' %}">Home Page</a>
+{% endblock %}

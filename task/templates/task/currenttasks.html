@@ -1,0 +1,22 @@
+{% extends "task/base.html" %} {% block content %} {% csrf_token %}
+<br />
+<h3>Current Tasks</h3>
+<br />
+<a href="{% url 'createtask' %}">Create New Task</a>
+<br />
+<br />
+<ul>
+  {% for task in tasks %}
+  <li>
+    {% if task.important %} <b> {%endif%} 
+       <a href="{% url 'currenttask' task.id %}"> {{ task.title }} </a>
+    {% if task.important %} </b> {% endif %} 
+    {% if task.description %} - {{ task.description }} {% endif %}
+  </li>
+  {{ task.created }}
+  <br />
+  {% endfor %}
+</ul>
+<br />
+<a href="{% url 'home' %}">Home Page</a>
+{% endblock %}
