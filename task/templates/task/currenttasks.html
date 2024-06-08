@@ -1,22 +1,44 @@
-{% extends "task/base.html" %} {% block content %} {% csrf_token %}
-<br />
-<h3>Current Tasks</h3>
-<br />
-<a href="{% url 'createtask' %}">Create New Task</a>
-<br />
-<br />
-<ul>
-  {% for task in tasks %}
-  <li>
-    {% if task.important %} <b> {%endif%} 
-       <a href="{% url 'currenttask' task.id %}"> {{ task.title }} </a>
-    {% if task.important %} </b> {% endif %} 
-    {% if task.description %} - {{ task.description }} {% endif %}
-  </li>
-  {{ task.created }}
-  <br />
-  {% endfor %}
-</ul>
-<br />
-<a href="{% url 'home' %}">Home Page</a>
+{% extends "task/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      {% csrf_token %}
+      <h3 class="mb-4">Current Tasks</h3>
+      
+      <div class="mb-3">
+        <a href="{% url 'createtask' %}" class="btn btn-success">Create New Task</a>
+      </div>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      {% if tasks %}
+        <ul class="list-group">
+          {% for task in tasks %}
+          <li class="list-group-item d-flex justify-content-between align-items-center {% if task.important %}important-task{% endif %}">
+            <div>
+              {% if task.important %}<b>{% endif %}
+              <a href="{% url 'currenttask' task.id %}" class="task-link">{{ task.title }}</a>
+              {% if task.important %}</b>{% endif %}
+              {% if task.description %} - {{ task.description }}{% endif %}
+            </div>
+            <span class="text-muted small">{{ task.created }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-center text-muted">No tasks available. Create a new task to get started.</p>
+      {% endif %}
+      
+      <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Home Page</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
+

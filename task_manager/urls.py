@@ -28,8 +28,8 @@ urlpatterns = [
     # user
     path("current/", views.currenttasks, name="currenttasks"),
     path("current/<int:task_pk>", views.currenttask, name="currenttask"),
-    path("current/<int:task_pk>/complete>", views.completecurrenttask, name="completecurrenttask"),
-    path("current/<int:task_pk>/delete>", views.deletecurrenttask, name="deletecurrenttask"),
+    path("current/<int:task_pk>/complete", views.completecurrenttask, name="completecurrenttask"),
+    path("current/<int:task_pk>/delete", views.deletecurrenttask, name="deletecurrenttask"),
     path("createtask/", views.createtask, name="createtask"),
     path("completedtasks/", views.completedtasks, name="completedtasks"),
     path("completed/<int:task_pk>", views.completedtask, name="completedtask"),
